@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+  </head>
+  <body>
+    <h1>D3 trial</h1>
+    <script>
+    //Fetch data
+      d3.json("mydata.json", function(data){
+        var canvas = d3.select("body").append("svg")
+          .attr("width", 500)
+          .attr("height", 500);
+
+        canvas.selectAll("rect")
+          .data(data)
+          .enter()
+              .append("rect")
+              .attr("width", function(d){ return d.age * 10; })
+              .attr("height", 48)
+              .attr("y", function(d, i){return 50*i;})
+              .attr("fill", "blue");
+
+        canvas.selectAll("text")
+          .data(data)
+          .enter()
+              .append("text")
+              .text(function(d) {return d.name;})
+              .attr("y", function(d, i){return 50*i + 28;})
+              .attr("fill", "white");
+
+
+      })
+    //Data Binding
+      //var data = [10, 20, 30, 40, 50];
+
+
+      //Moving charts
+      // var canvas = d3.select("body")
+      //     .append("svg")
+      //     .attr("width", 500)
+      //     .attr("height", 500);
+
+      // var circle = canvas.append("circle")
+      //         .attr("cx", 50)
+      //         .attr("cy", 100)
+      //         .attr("r", 25);
+
+      // circle.transition()
+      //     .duration(1500)
+      //     .delay(2000)
+      //     .attr("cx", 150)
+      //     .attr("cy", 150)
+      //     .each("end", function(){d3.select(this).attr("fill", "green");});
+
+      // var circle2 = canvas.append("circle")
+      //         .attr("cx", 50)
+      //         .attr("cy", 200)
+      //         .attr("r", 25);
+
+
+      // var circles = canvas.selectAll("circle")
+      //     .data(data)
+      //     .attr("fill", "green")
+      //     .exit()
+      //         .attr("fill", "blue")
+
+    //Creating a Bar Chart
+   // var dataArray = [20, 40, 50, 60];
+   //    var width = 500;
+   //    var height = 500;
+
+   //    var widthScale = d3.scale.linear()
+   //                        .domain([0, 60])
+   //                        .range([0, width]);
+   //    var axis = d3.svg.axis()
+   //                  .ticks(5)
+   //                  .scale(widthScale);
+   //    var colorScale = d3.scale.linear()
+   //                      .domain([0, 60])
+   //                      .range(["red", "blue"]);
+   //    var canvas = d3.select("body")
+   //      .append("svg")
+   //      .attr("width", width)
+   //      .attr("height", height)
+   //      .append("g")
+   //      .attr("transform", "translate(20, 0)");
+
+   //    canvas.append("g")
+   //          .attr("transform", "translate(0, 400)")
+   //          .call(axis);
+
+   //    var bars = canvas.selectAll("rect")
+   //                    .data(dataArray)
+   //                    .enter()
+   //                        .append("rect")
+   //                        .attr("width", function(d){return widthScale(d);})
+   //                        .attr("height", 50)
+   //                        .attr("fill", function(d){return colorScale(d);})
+   //                        .attr("y", function(d, i){ return i*100;});
+    //Creating shapes
+    // var circle = canvas.append("circle")
+    //                   .attr("cx", 250)
+    //                   .attr("cy", 250)
+    //                   .attr("r", 50)
+    //                   .attr("fill", "red");
+    // var rect = canvas.append("rect")
+    //                   .attr("width", 100)
+    //                   .attr("height", 50);
+    // var line = canvas.append("line")
+    //                 .attr("x1", 0)
+    //                 .attr("y1", 100)
+    //                 .attr("x2", 400)
+    //                 .attr("y2", 400)
+    //                 .attr("stroke", "green")
+    //                 .attr("stroke-width", 10);
+
+
+
+
+
+
+    </script>
+  </body>
+</html>
